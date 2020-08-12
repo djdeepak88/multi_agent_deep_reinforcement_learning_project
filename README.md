@@ -65,13 +65,15 @@ I have used DDPG to solve this task. Please see `Report.md` for complete details
 The below plot shows the scores during training
 ![result](./train_result_graph.png)
 
-The task is solved in 66 episodes with average max score of 0.50.
+The task is solved in 140 episodes with average score greater than 0.50 in 100 episodes.
 
 ## Instructions
-The project consists of 9 files:
+The main project files are:
 * tennis.ipynb - run this file in Jupyter Notebook
 * agent.py - the DDPG Agent class, Replay Buffer class and OUNoise class
 * deep_network.py - the Actor and Critic Network model architecture.
-* checkpoint-actor.pth - actor trained model
-* checkpoint-critic.pth - actor trained model
+* checkpoint - actor.pth - actor trained model
+* checkpoint - critic.pth - actor trained model
 * Report.md - description of the implementation
+* workspace_utils.py - consists of code to make training run for long duration.
+* train_result_graph.png - plot of the reward vs episode number.
