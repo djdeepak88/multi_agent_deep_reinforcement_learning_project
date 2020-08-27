@@ -2,7 +2,7 @@
 
 ### Project Details
 
-As a part of **Udacity Deep Reinforcement Learning Nanodegree** course, this is the third project in which the goal was to develop a competetive MultiAgentRL (MARL) algorithm to do a task on a continous state and continous action space. I have used **Deep Deterministic Policy Gradient** method to solve this problem. I have used a shared replay buffer and two agents share the experiences as their observations are local.
+ This goal was to develop a competetive MultiAgentRL (MARL) algorithm to do a task on a continous state and continous action space. I have used **Deep Deterministic Policy Gradient** method to solve this problem. I have used a shared replay buffer and two agents share the experiences as their observations are local.
 
 ##### Problem Definition
 
@@ -36,11 +36,42 @@ I have used DDPG to solve this task. Please see `Report.md` for complete details
 </br>
 
 ## Installation
-### Install deep reinforcement learning repository
-1. Clone [deep reinforcement learning repository](https://github.com/udacity/deep-reinforcement-learning)
-2. Follow the instructions to install necessary [dependencies](https://github.com/udacity/deep-reinforcement-learning#dependencies)
+### Create the python environment
+To set up your python environment to run the code in this zip folder, first create the python environment.
+
+1. Create (and activate) a new environment with Python 3.6.
+
+	- __Linux__ or __Mac__:
+	```bash
+	conda create --name drlnd python=3.6
+	source activate drlnd
+	```
+	- __Windows__:
+	```bash
+	conda create --name drlnd python=3.6
+	activate drlnd
+	```
+
+2. Follow the instructions in [this repository](https://github.com/openai/gym) to perform a minimal install of OpenAI gym.  
+	- Next, install the **classic control** environment group by following the instructions [here](https://github.com/openai/gym#classic-control).
+	- Then, install the **box2d** environment group by following the instructions [here](https://github.com/openai/gym#box2d).
+
+3. Install several dependencies as mentioned in the enclosed requirements.txt file.
+```bash
+pip install -r requirements.txt
+or
+pip3 install -r requirements.txt
+```
+
+4. Create an [IPython kernel](http://ipython.readthedocs.io/en/stable/install/kernel_install.html) for the `drlnd` environment.  
+```bash
+python -m ipykernel install --user --name drlnd --display-name "drlnd"
+```
+
+5. Before running code in a notebook, change the kernel to match the `drlnd` environment by using the drop-down `Kernel` menu.
+
 ### Download the Unity Environment
-1. Download environment for your system into this repository root
+Download Unity environment for your system.
 
 * Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis.app.zip)
 
@@ -52,8 +83,8 @@ I have used DDPG to solve this task. Please see `Report.md` for complete details
 
 * Headless: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux_NoVis.zip)
 
-2. Unzip (or decompress) the archive
 ### Run the project
+Unzip (or decompress) the project archive next to the downloaded unity environment and then.
 1. Start the jupyter server
 2. Open the Tennis.ipynb notebook
 3. Change the kernel to drlnd
@@ -72,8 +103,8 @@ The main project files are:
 * tennis.ipynb - run this file in Jupyter Notebook
 * agent.py - the DDPG Agent class, Replay Buffer class and OUNoise class
 * deep_network.py - the Actor and Critic Network model architecture.
-* checkpoint - actor.pth - actor trained model
-* checkpoint - critic.pth - actor trained model
+* checkpoint_actor.pth - actor model checkpoint
+* checkpoint_critic.pth - critic trained checkpoint
 * Report.md - description of the implementation
 * workspace_utils.py - consists of code to make training run for long duration.
 * train_result_graph.png - plot of the reward vs episode number.

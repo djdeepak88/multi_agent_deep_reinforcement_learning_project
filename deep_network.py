@@ -10,7 +10,7 @@ def hidden_init(layer):
     return (-lim, lim)
 
 class DeepNetwork(nn.Module):
-    """ Geeneric Neural network class for both Actor and Critic """
+    """ Generic Neural network class for both Actor and Critic """
     def __init__(self, category_nn, action_size, state_size, hidden_units, seed, dropout=0.3):
         """Initialize Neural Network parameters and build model.
         Params
@@ -23,7 +23,9 @@ class DeepNetwork(nn.Module):
             dropout(float) : dropout value for the network nodes.
         """
         super(DeepNetwork, self).__init__()
-        self.seed = torch.manual_seed(seed)
+        
+        # seed for reproducibility
+        torch.manual_seed(seed)
 
         # Type of network
         self.category_nn = category_nn

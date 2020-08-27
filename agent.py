@@ -36,7 +36,7 @@ class Agent:
 
         # Replay Buffer memory
         self.memory = ReplayBuffer(action_size, buffer_size, batch_size, seed, device)
-        
+
         # Tau for soft update
         self.tau = tau
 
@@ -117,13 +117,13 @@ class Agent:
         """
         for target_param, param in zip(target.parameters(), source.parameters()):
             target_param.data.copy_(param.data)
-      
+
     def load(self, actor_file, critic_file):
         self.actor_local.load_state_dict(torch.load(actor_file))
         self.critic_local.load_state_dict(torch.load(critic_file))
         self.hard_update(self.actor_target, self.actor_local)
-        self.hard_update(self.critic_target, self.critic_local)  
-      
+        self.hard_update(self.critic_target, self.critic_local)
+
 
 class ReplayBuffer:
     """Fixed-size buffer to store experience tuples."""
@@ -133,7 +133,7 @@ class ReplayBuffer:
 
         Params
         ======
-            action_size (int): dimension of each action
+            action_size (int): dimension of action space
             buffer_size (int): maximum size of buffer
             batch_size (int): size of each training batch
             seed (int): random seed
@@ -169,8 +169,17 @@ class ReplayBuffer:
 
 # from https://github.com/songrotek/DDPG/blob/master/ou_noise.py
 class OUNoise:
-
+    """Ornstein-Uhlenbeck process implementation"""
     def __init__(self, action_dimension, scale=0.1, mu=0, theta=0.15, sigma=0.2):
+        """ Intialize OUN class
+        Params
+        ======
+            action_dimension (int): dimension of action space
+            scale (float): scaling factor
+            mu (float): mu value of normal distribution
+            theta (float): theta value
+            sigma (float): sigma value of normal distribution
+        """
         self.action_dimension = action_dimension
         self.scale = scale
         self.mu = mu
@@ -180,9 +189,11 @@ class OUNoise:
         self.reset()
 
     def reset(self):
+        """Reset function"""
         self.state = np.ones(self.action_dimension) * self.mu
 
     def noise(self):
+        """Noise generation"""
         x = self.state
         dx = self.theta * (self.mu - x) + self.sigma * np.random.randn(len(x))
         self.state = x + dx
